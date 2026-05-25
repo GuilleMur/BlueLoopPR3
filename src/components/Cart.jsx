@@ -17,7 +17,7 @@ const Cart = () => {
 
     try {
       // Petición HTTP POST a nuestro nuevo servidor Node.js
-      const response = await fetch('https://spotted-case-sturdy.ngrok-free.dev', {
+      const response = await fetch('https://spotted-case-sturdy.ngrok-free.dev/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
