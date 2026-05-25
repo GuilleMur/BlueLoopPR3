@@ -1,0 +1,1159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #49c4f1, #29648f 100%);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+body {
+    padding: 120px 0 0 0;    
+    background: linear-gradient(to bottom, #49c4f1, #29648f);
+    font-family: 'Inter', sans-serif; /* Una fuente moderna */
+    margin: 0;
+}
+
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #49c4f1, #29648f);
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Permite hacer click a través cuando sea invisible */
+}
+
+.page-loader.fade-out {
+    opacity: 0;
+}
+
+.burbujas {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Se quedan detrás de todo el contenido */
+    overflow: hidden;
+    pointer-events: none; /* Para que no molesten al hacer click en botones */
+}
+
+/* Estilo base de cada burbuja */
+.burbuja {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255, 255, 255, 0.3); /* Color blanco traslúcido */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: flotar 10s infinite linear;
+}
+
+/* Animación de subida */
+@keyframes flotar {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Diferentes tamaños y velocidades para que no suban todas iguales */
+.burbuja:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 8s; animation-delay: 0s; }
+.burbuja:nth-child(2) { left: 25%; width: 40px; height: 40px; animation-duration: 12s; animation-delay: 2s; }
+.burbuja:nth-child(3) { left: 40%; width: 10px; height: 10px; animation-duration: 10s; animation-delay: 4s; }
+.burbuja:nth-child(4) { left: 55%; width: 40px; height: 40px; animation-duration: 15s; animation-delay: 0s; }
+.burbuja:nth-child(5) { left: 70%; width: 30px; height: 30px; animation-duration: 7s; animation-delay: 5s; }
+.burbuja:nth-child(6) { left: 85%; width: 20px; height: 20px; animation-duration: 11s; animation-delay: 3s; }
+.burbuja:nth-child(7) { left: 15%; width: 25px; height: 25px; animation-duration: 9s; animation-delay: 1s; }
+.burbuja:nth-child(8) { left: 95%; width: 15px; height: 15px; animation-duration: 13s; animation-delay: 6s; }
+/* NAVBAR */
+.navbar {
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px 20px 80px;
+    box-sizing: border-box;
+    z-index: 1000;
+    
+    /* 1. Evita "all", anima solo lo necesario */
+    transition: padding 0.7s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+    
+    /* 2. Fondo transparente explícito (evita el rastro negro) */
+    background: rgba(255, 255, 255, 0.8);
+    transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                background-color 0.5s ease;
+    
+    /* 3. Elimina posibles bordes fantasma */
+    border: none;
+    outline: none;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px; /* Espacio más generoso entre links */
+    margin: 0; 
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #234d5f;
+    font-size: 1.1rem;
+    font-weight: 700;
+    position: relative; /* Para el efecto de la línea debajo */
+    transition: color 0.3s ease;
+}
+
+/* Mini efecto visual: una línea que aparece al pasar el mouse */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -5px;
+    left: 0;
+    background-color: #177c92;
+    transition: width 0.3s ease;
+}
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Opcional: También puedes cambiar el color del texto para que resalte más */
+.nav-links a.active {
+    color: #177c92; /* El turquesa de tu gradiente */
+}
+.nav-links a:hover {
+    color: #177c92;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+.btn-language {
+    background: none;        /* Quita el fondo gris por defecto */
+    border: none;            /* Quita el borde inicial */
+    outline: none;           /* Quita la línea de selección azul/negra al hacer clic */
+    padding: 0;              /* Elimina espacios internos extra */
+    cursor: pointer;         /* Asegura que salga la mano al pasar el ratón */
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent; 
+    user-select: none;
+    transition: all 0.3s ease;
+}
+.btn-language:active {
+    transform: scale(0.95); /* El botón se encoge un poco al clicar */
+}
+
+
+#language-flag {
+    width: 60px; /* Tamaño de la bandera */
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    
+}
+.btn-modern {
+    text-decoration: none; /* Esto elimina la línea */
+    color: inherit;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 12px 30px;    /* Más grande */
+    border-radius: 50px;
+    font-weight: 800;      /* Muy negrita */
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(23, 124, 146, 0.3);
+}
+
+/* El contenedor del logo ahora controla el espacio en la navbar */
+.logo {
+    position: relative;
+    height: 90px;  /* Ajusta esto para que quepa en tu navbar (120px - 30px de margen aprox) */
+    width: 150px;   /* Ajusta al ancho de tu logo */
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 120px; 
+    width: auto;
+    display: block;
+    position: absolute; /* Siguen siendo absolute para solaparse */
+    top: -15px;
+    left: 0;
+    transition: opacity 0.4s ease, height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ESTADO INICIAL */
+.logo-img.active {
+    opacity: 0; /* El GIF está oculto */
+    pointer-events: none;
+}
+
+.logo-img.static {
+    opacity: 1; /* El PNG es visible */
+}
+
+/* ESTADO AL PASAR EL RATÓN */
+.logo:hover .logo-img.static {
+    opacity: 0; /* Desaparece el PNG */
+}
+
+.logo:hover .logo-img.active {
+    opacity: 1; /* Aparece el GIF */
+}
+
+
+
+/* --- HERO GLOBAL --- */
+.hero {
+    min-height: 80vh; /* Altura generosa para el Hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.hero-container {
+    display: grid;
+    /* Divide en dos columnas iguales */
+    grid-template-columns: 1fr 1fr; 
+    padding: 50px;
+    gap: 140px;
+    max-width: 1500px;
+    width: 100%;
+    align-items: center; /* Centra verticalmente el texto con el carrusel */
+}
+
+/* --- COLUMNA IZQUIERDA (Texto) --- */
+.hero-text {
+    padding: 60px;
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    /* Efecto Glassmorphism que definimos antes */
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #233c5f;
+}
+
+.brand-color {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 40px;
+    max-width: 500px; /* Evita líneas de texto demasiado largas */
+}
+
+/* --- COLUMNA DERECHA (Carrusel) --- */
+.hero-carousel {
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    height: 80%;
+    overflow: hidden; /* Oculta las imágenes que no están visibles */
+    height: auto;
+    border-radius: 30px;
+    /* Glassmorphism sutil para el contenedor del carrusel */
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+}
+
+.carousel-track-container {
+    height: 500px; /* Altura fija para el carrusel */
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    /* ESTA ES LA CLAVE DEL DESLIZAMIENTO */
+    transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex; /* Alinea los slides horizontalmente */
+}
+
+.carousel-slide {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 100%; /* Cada slide ocupa el 100% del contenedor */
+    flex-shrink: 0; /* Evita que los slides se encojan */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-image {
+    max-height: 100%;
+    border-radius: 12px;
+    max-width: 100%;
+    object-fit: contain; /* Asegura que la botella se vea entera */
+    /* Sombra suave para dar volumen a la botella */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+.product-info-mini {
+    margin-top: 20px;
+    font-weight: 700;
+    color: #233c5f;
+    font-size: 1.1rem;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Indicadores (Puntos) */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.carousel-indicator {
+    border: 0;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-indicator.current-slide {
+    background: #177c92; /* Color de tu gradiente */
+    width: 25px; /* Efecto de punto alargado para el activo */
+    border-radius: 10px;
+}
+
+
+
+.features {
+    display: grid;
+    /* Crea 3 columnas iguales que se adaptan al tamaño de pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 80px 50px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.feature {
+    padding: 40px;
+    
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Efecto cristal mejorado */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+}
+
+/* Efecto al pasar el ratón */
+.feature:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    /* Un pequeño brillo para el icono */
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
+
+.feature h2 {
+    color: #ffffff; /* O el azul oscuro si prefieres: #233c5f */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.feature p {
+    color: #f0f0f0;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.circular-economy {
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.cycle-container {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Para que sea responsivo */
+}
+
+.cycle-step {
+    
+    flex: 1;
+    min-width: 200px;
+    max-width: 280px;
+    padding: 30px;
+    border-radius: 30px;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.cycle-step:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-gradient);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.cycle-arrow {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.5);
+    /* Animación de latido para indicar flujo */
+    animation: pulseArrow 2s infinite;
+}
+
+@keyframes pulseArrow {
+    0%, 100% { transform: translateX(0); opacity: 0.5; }
+    50% { transform: translateX(10px); opacity: 1; }
+}
+
+.cycle-step h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.cycle-step p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+#contact {
+    /* Ajusta este valor (100px) según lo alto que sea tu navbar */
+    scroll-margin-top: 100px; 
+}
+
+.contact-section {
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-container {
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Info más estrecha, Formulario más ancho */
+    gap: 50px;
+    max-width: 1000px;
+    width: 100%;
+    padding: 60px;
+    border-radius: 40px;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    color: white;
+}
+
+/* --- Estilos del Formulario --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Quitar el color por defecto de los placeholders */
+.input-group input::placeholder, 
+.input-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Efecto al hacer click en los campos */
+.input-group input:focus, 
+.input-group textarea:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.contact-form .btn-modern {
+    align-self: flex-start;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}
+
+footer {
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+}
+
+
+button {
+    width: 100%;
+    background-color: var(--azul-primario);
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.btn-contact {
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 12px 30px;    /* Más grande */
+    border-radius: 50px;
+    font-weight: 800;      /* Muy negrita */
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(23, 124, 146, 0.3);
+}
+.btn-contact:active {
+    transform: scale(0.95); /* El botón se encoge un poco al clicar */
+    box-shadow: 0 2px 8px rgba(23, 124, 146, 0.2); /* La sombra se reduce al estar más "cerca" del suelo */
+}
+
+
+/* Estilos para About Us */
+.about-hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+.section-title {
+    font-size: 2.8rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 50px 100px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* La tarjeta ya no se mueve, solo cambia sutilmente el fondo */
+.team-card {
+    padding: 40px 20px;
+    text-align: center;
+    transition: background 0.4s ease;
+}
+
+/* Anulamos la onda por completo en los elementos con 'no-ripple' */
+.card-glass.no-ripple::before {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+}
+
+/* Si quieres que la tarjeta sea invisible pero mantenga el blur de fondo */
+.team-card.card-glass {
+    background: transparent; /* O un rgba muy muy bajito como 0.05 */
+    border-color: transparent; 
+    box-shadow: none;
+}
+
+/* Mantenemos la interactividad solo en la foto para que no quede soso */
+.team-card:hover .member-photo {
+    transform: scale(1.1) rotate(3deg);
+    
+}
+
+/* El círculo de la foto es el que ahora tiene la acción */
+.member-photo {
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    
+    /* CAMBIO CLAVE: Quitamos overflow: hidden para que la onda se vea fuera */
+    overflow: visible; 
+    
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    position: relative; /* Necesario para posicionar la onda */
+    z-index: 1;
+
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.5s ease,
+                border-color 0.5s ease;
+}
+
+/* Como quitamos el overflow al padre, tenemos que asegurar que la IMG siga siendo circular */
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    border-radius: 50%; /* Añadimos esto aquí para mantener la forma circular de la foto */
+    transition: transform 0.5s ease;
+}
+
+/* Añadimos la definición del ::before que faltaba en tu código */
+.member-photo::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* El resto de tus hovers están perfectos */
+
+.team-card:hover .member-photo::before {
+    animation: circularRipple 0.8s ease-out;
+}
+
+@keyframes circularRipple {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+.team-card:hover .member-photo img {
+    transform: scale(1.1);
+}
+.team-card h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.role {
+    display: block;
+    color: #11414c; /* Azul brillante para destacar el cargo */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.team-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* --- SHOP STYLES --- */
+.shop-hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 300px;
+    padding: 20px 50px 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.product-details {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.btn-add-cart {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 12px 30px;    /* Más grande */
+    border-radius: 50px;
+    font-weight: 800;      /* Muy negrita */
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(23, 124, 146, 0.3);
+}
+.product-card {
+    scale: 0.8;
+    transition: transform 0.5s ease;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    flex: 1;
+    min-width: 320px;
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Aplicamos el efecto a cualquier contenedor tipo cristal */
+.card-glass {
+    position: relative; /* Necesario para que la onda se posicione respecto al contenedor */
+    z-index: 1;
+    /* Aseguramos que nada corte la onda al expandirse */
+    overflow: visible !important; 
+}
+
+/* La onda universal */
+.card-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    /* Hereda el border-radius del contenedor automáticamente si usas 'inherit' 
+       o simplemente asegúrate de que coincida con tus 30px o 25px habituales */
+    border-radius: inherit; 
+    opacity: 0;
+    transform: scale(1);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Disparador para todos los contenedores al hacer hover */
+.card-glass:hover::before {
+    animation: rippleOut 0.8s ease-out;
+}
+
+/* La animación se mantiene igual */
+@keyframes rippleOut {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.08, 1.05); /* Un poco más sutil para contenedores grandes */
+        opacity: 0;
+    }
+}
+
+.product-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.product-badge.eco {
+    background: linear-gradient(135deg, #42e695 0%, #3bb2b8 100%);
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-image img {
+    max-height: 100%;
+}
+
+.product-card:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+    
+}
+
+.product-details {
+    text-align: center;
+    width: 100%;
+}
+
+.product-size {
+    color: #177c92;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+}
+
+/* Selector de cantidad */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.remove-item {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.qty-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.qty-input {
+    width: 40px;
+    background: none;
+    border: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.cart-page {
+    padding: 120px 20px 60px;
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+    color: white;
+}
+.cart-container h1, .cart-summary span {
+    color: white;
+}
+
+.cart-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    /* Efecto Glassmorphism que definimos antes */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 80px 2fr 1fr 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item img {
+    width: 60px;
+    filter: drop-shadow(0 5px 10px rgba(255, 255, 255, 0.2));
+}
+
+.cart-summary {
+    margin-top: 40px;
+    margin-left: auto;
+    max-width: 300px;
+    text-align: right;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.summary-row.total {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #00d2ff;
+    margin: 20px 0;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 15px;
+}
+
+
+.qty-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    width: 40px;
+}
+
+/* El mensaje de éxito que saltará */
+.order-success-msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: rgba(0, 40, 80, 0.9);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 30px;
+    border: 2px solid #00d2ff;
+    text-align: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.success-icon-container img {
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.5));
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.order-success-msg.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+/* Quitar flechas del input number */
+.qty-input::-webkit-inner-spin-button { display: none; }
+
+.btn-add-cart {
+    width: 100%;
+}
+
+/* --- Estilos unificados para enlaces de navegación --- */
+.nav-btn {
+    /* Reset total de estilos de botón/enlace */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+    
+    /* Tipografía y Color */
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #234d5f; /* Tu color base */
+    
+    /* Layout y Animación */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+/* Línea decorativa debajo (Pseudo-elemento) */
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2.5px;
+    background-color: #177c92; /* Tu turquesa corporativo */
+    transition: width 0.3s ease;
+}
+
+/* Estados: Hover y Activo (Comparten la misma estética) */
+.nav-btn:hover,
+.nav-btn.active {
+    color: #177c92;
+}
+
+.nav-btn:hover::after,
+.nav-btn.active::after {
+    width: 100%;
+}
+
+/* Contenedor de los botones (Aplica esto al <ul> que envuelve los links) */
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px; /* Espacio generoso entre links */
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Efecto de clic para los botones modernos --- */
+.btn-modern {
+  /* Tus estilos actuales (background, padding, border, etc.) */
+  transition: transform 0.1s ease, box-shadow 0.1s ease; /* Transición rápida */
+  cursor: pointer;
+}
+
+/* Cuando el usuario mantiene pulsado el botón */
+.btn-modern:active {
+  transform: scale(0.96); /* El botón se encoge un 4% simulanado que se hunde */
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2); /* Sombra interna opcional para dar profundidad */
+}
+
+/* Asegura que el contenedor principal de éxito llene la pantalla */
+.success-main-wrapper {
+  min-height: calc(100vh - 80px); /* Ajusta los 80px según el alto de tu Navbar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.order-success-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Evita que el fondo general de la app intente colapsar o repetirse */
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
