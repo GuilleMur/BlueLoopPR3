@@ -230,6 +230,7 @@ body {
 
 /* --- HERO GLOBAL --- */
 .hero {
+    
     min-height: 80vh; /* Altura generosa para el Hero */
     display: flex;
     align-items: center;
@@ -238,6 +239,7 @@ body {
 }
 
 .hero-container {
+    
     display: grid;
     /* Divide en dos columnas iguales */
     grid-template-columns: 1fr 1fr; 
@@ -250,9 +252,11 @@ body {
 
 /* --- COLUMNA IZQUIERDA (Texto) --- */
 .hero-text {
+    
     padding: 60px;
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
+    
     /* Efecto Glassmorphism que definimos antes */
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -260,6 +264,7 @@ body {
 }
 
 .hero-text h1 {
+    
     font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 20px;
@@ -290,7 +295,7 @@ body {
     height: auto;
     border-radius: 30px;
     /* Glassmorphism sutil para el contenedor del carrusel */
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     border: 1px solid var(--glass-border);
     padding: 20px;
 }
@@ -553,7 +558,7 @@ body {
 .input-group textarea {
     width: 100%;
     padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     color: white;
@@ -572,7 +577,7 @@ body {
 /* Efecto al hacer click en los campos */
 .input-group input:focus, 
 .input-group textarea:focus {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     border-color: #00d2ff;
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
 }
@@ -588,7 +593,7 @@ footer {
     -webkit-backdrop-filter: blur(10px);
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     color: white;
     font-size: 0.9rem;
 }
@@ -689,7 +694,7 @@ button {
     overflow: visible; 
     
     border: 4px solid rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     position: relative; /* Necesario para posicionar la onda */
     z-index: 1;
@@ -793,7 +798,7 @@ button {
 .product-card {
     scale: 0.8;
     transition: transform 0.5s ease;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
@@ -915,7 +920,7 @@ button {
 .quantity-selector {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -938,7 +943,7 @@ button {
 }
 
 .qty-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .qty-input {
@@ -967,10 +972,9 @@ button {
     padding: 40px;
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     border: 1px solid var(--glass-border);
     /* Efecto Glassmorphism que definimos antes */
-    background: rgba(255, 255, 255, 0.15);
     border: 1px solid var(--glass-border);
     border-radius: 30px;
 }
@@ -1017,7 +1021,7 @@ button {
 
 
 .qty-input {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
     text-align: center;
@@ -1151,9 +1155,266 @@ button {
   padding: 20px;
 }
 
-/* Evita que el fondo general de la app intente colapsar o repetirse */
+/* Evita que el fondo general de la app intente colapsar o repetirse 
 body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}*/
+
+/* ==========================================================
+   📊 SECCIÓN INDUSTRIAL: DASHBOARD PLANTA INTELIGENTE (FLEXSIM)
+   ========================================================== */
+
+.dashboard-main-wrapper {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  color: #00d2ff;
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  color: #b0c4de;
+  font-size: 1.1rem;
+}
+
+/* Grid de KPIs Superiores */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.text-center-kpi {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpi-card h3 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.kpi-value {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin: 8px 0;
+  line-height: 1;
+}
+
+.kpi-sub {
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+
+/* Grids e infraestructura del Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 25px;
+}
+
+.db-full-width {
+  grid-column: 1 / -1;
+}
+/* REEMPLAZA ESTAS SECCIONES EN TU CSS GLOBAL */
+
+/* Aseguramos que la tarjeta del dashboard use el gris traslúcido y bordes idénticos al resto de la web */
+.dashboard-card {
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px; /* Esquinas perfectamente redondeadas */
+  padding: 24px;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover opcional para que se mueva ligeramente al pasar el ratón (muy pro para la feria) */
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 210, 255, 0.2); /* Destello cyan suave al enfocar */
+}
+
+/* Forzar que los KPIs de arriba también tengan exactamente el mismo comportamiento */
+.kpi-card.card-glass {
+  background: rgba(30, 35, 45, 0.65) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.dashboard-card h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.section-desc {
+  color: #a0aec0;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* Sección de Robots */
+.robot-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.robot-progress {
+  text-align: center;
+}
+
+.circle-data {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 6px solid #0374e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.circle-data.partial {
+  border-color: #ffb800;
+  box-shadow: 0 0 15px rgba(255, 184, 0, 0.25);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.status-badge.busy { background: rgba(0, 210, 255, 0.15); color: #0374e4; border: 1px solid rgba(0, 210, 255, 0.3); }
+.status-badge.idle { background: rgba(255, 184, 0, 0.15); color: #ffb800; border: 1px solid rgba(255, 184, 0, 0.3); }
+
+/* Tablas de las Colas */
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.dashboard-header h1,
+.dashboard-header p {
+  color: #ffffff !important;
+}
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  text-shadow: 0 0 15px rgba(0, 210, 255, 0.4); /* Le dejamos el sutil brillo azul de fondo para que quede futurista */
+  margin-bottom: 10px;
+}
+.dashboard-table th, .dashboard-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dashboard-table th {
+  color: #8a9ba8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-table td {
+  font-size: 0.95rem;
+}
+
+/* Gráficas de Barras de Tiempos */
+.chart-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/* Fuerza a los KPIs superiores a tener el efecto de cristal que pides */
+/* CON ESTO FORZAMOS EL LOOK CLARO Y EL BLUR REFRACTIVO */
+.kpi-grid .kpi-card.card-glass {
+  background: rgba(255, 255, 255, 0.22) !important; /* Fondo blanco traslúcido potente */
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important; /* Borde blanquecino más marcado */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15) !important; /* Sombra más suave por el fondo claro */
+  
+  /* Mantenemos el orden interno */
+  border-radius: 16px !important;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Opcional: Si quieres que las letras pequeñas de abajo (kpi-sub) se lean mejor sobre el fondo claro */
+.kpi-grid .kpi-card .kpi-sub {
+  color: #e2e8f0 !important; /* Blanco hueso para que resalte */
+  font-weight: 500;
+}
+.kpi-card.card-glass{
+
+  padding: 20px;
+  border-radius: 20px;
+}
+.bar-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #cbd5e0;
+}
+
+.bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bar {
+  height: 18px;
+  border-radius: 4px;
+}
+
+.color-red { background: linear-gradient(90deg, #ff4b4b, #ff7676); box-shadow: 0 0 10px rgba(255,75,75,0.25); }
+.color-orange { background: linear-gradient(90deg, #ff8a00, #ffb800); box-shadow: 0 0 10px rgba(255,138,0,0.25); }
+.color-yellow { background: linear-gradient(90deg, #e1b300, #ffea79); }
+.color-blue { background: linear-gradient(90deg, #0072ff, #00d2ff); box-shadow: 0 0 10px rgba(0,210,255,0.25); }
+
+/* Helpers de colores rápidos */
+.text-cyan { color: #00d2ff; }
+.text-green { color: #00e676; }
+.text-red { color: #ff4b4b; }
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
-import Shop from './components/Shop'; // Si ya lo tienes creado
-import Cart from './components/Cart'; // Si ya lo tienes creado
+import Shop from './components/Shop'; 
+import Cart from './components/Cart'; 
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import PageTransition from './components/PageTransition'
