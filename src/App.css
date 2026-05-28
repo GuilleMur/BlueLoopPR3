@@ -1418,3 +1418,12 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.dashboard-table th, 
+.dashboard-table td {
+  color: #ffffff !important; /* Fuerza el blanco puro */
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+

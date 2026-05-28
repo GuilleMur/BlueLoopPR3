@@ -11,7 +11,7 @@ const AboutUs = () => {
       name: "Javier Ochando Vidal",
       role: t('team-role-javier'),
       desc: t('team-desc-javier'),
-      img: "/img/javier.png" // Añadimos / para que busque en public
+      img: "/img/Javier.jpeg"
     },
     {
       name: "Daniel Cantó Catalán",
@@ -29,7 +29,7 @@ const AboutUs = () => {
       name: "Guillermo Murgadas Valenzuela",
       role: t('team-role-guillermo'),
       desc: t('team-desc-guillermo'),
-      img: "/img/team/guillermo.png"
+      img: "/img/Guille.jpg"
     }
   ];
 

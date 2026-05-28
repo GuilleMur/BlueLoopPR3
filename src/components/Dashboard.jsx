@@ -11,8 +11,8 @@ const Dashboard = () => {
       <div className="kpi-grid">
         <div className="kpi-card card-glass">
           <h3>📦 Cajas Procesadas (Total)</h3>
-          <p className="kpi-value text-cyan">658</p>
-          <span className="kpi-sub">PackNormal (376) + PackGas (183) + Listas (99)</span>
+          <p className="kpi-value text-cyan">1117/h</p>
+          <span className="kpi-sub">PackNormal (752) + PackGas (366)</span>
         </div>
         <div className="kpi-card card-glass">
           <h3>⚡ Eficiencia Media AGVs</h3>
@@ -21,7 +21,7 @@ const Dashboard = () => {
         </div>
         <div className="kpi-card card-glass">
           <h3>⏱️ Cuello de Botella Máximo</h3>
-          <p className="kpi-value text-red">16.2s</p>
+          <p className="kpi-value text-red">10.5s</p>
           <span className="kpi-sub">Estación: PackGas (Staytime Alto)</span>
         </div>
       </div>
@@ -94,11 +94,11 @@ const Dashboard = () => {
           <div className="chart-bar-container">
             <div className="bar-group">
               <label>PackGas (Línea Principal)</label>
-              <div className="bar-wrapper"><div className="bar color-red" style={{width: '100%'}}></div><span>16.20s</span></div>
+              <div className="bar-wrapper"><div className="bar color-red" style={{width: '100%'}}></div><span>10.52s</span></div>
             </div>
             <div className="bar-group">
               <label>PackGas 1 (Línea Secundaria)</label>
-              <div className="bar-wrapper"><div className="bar color-orange" style={{width: '96%'}}></div><span>15.66s</span></div>
+              <div className="bar-wrapper"><div className="bar color-orange" style={{width: '96%'}}></div><span>9.43s</span></div>
             </div>
             <div className="bar-group">
               <label>Añadir Gas (Línea 1)</label>
