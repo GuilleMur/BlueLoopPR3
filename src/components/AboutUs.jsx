@@ -11,7 +11,7 @@ const AboutUs = () => {
       name: "Javier Ochando Vidal",
       role: t('team-role-javier'),
       desc: t('team-desc-javier'),
-      img: "/img/Javier.jpeg"
+      img: "/img/Javi.jpeg"
     },
     {
       name: "Daniel Cantó Catalán",
